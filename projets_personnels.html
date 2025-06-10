@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Portfolio Leo</title>
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/css.css">
+    <link rel="stylesheet" href="css/cssProjet.css">
+    <script src="js/projet.js"></script>
+    
+        <!-- Add Font Awesome CDN -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+        <!-- Your CSS file -->
+        <link rel="stylesheet" href="css/css.css">
+    </head>
+</head>
+<body>
+    <header>
+        <nav class="lnav">
+            <nav class="navigation">
+                <a href="index.html">Accueil</a>
+                <a href="projet.html">Projets Professionnels</a>
+                <a href="projets_personnels.html">Projets Personnels</a>
+                <a href="about_me.html">Moi-même</a>
+                <a href="contact_me.html">Me Contacter</a>
+            </nav>
+            <a href="contact_me.html" class="btn-talk">Petite Discussion</a>
+        </nav>
+    </header>
+    <div class="titre">
+    <h2 class="logo"><span>V</span>oici <span>M</span>es <span>P</span>rojets <span>P</span>rofessionnelle.</h2>
+</div>
+
+
+
+<section class="projects">
+
+ 
+
+    <div class="project" onclick="togglePopup('popup1')">
+        <img src="images/raspberrypi.svg" alt="Project 1">
+        <h3>Raspberry Pi</h3>
+        <p>Firewall et Adblocker au niveau du LAN</p>
+    </div>
+
+    <div class="project" onclick="togglePopup('popup2')">
+        <img src="images/raspberrypi.svg" alt="Project 2">
+        <h3>Raspberry Pi</h3>
+        <p>Cloud Personnel Sécurisé</p>
+    </div>
+
+    <div class="project" onclick="togglePopup('popup3')">
+        <img src="images/arduino.png" alt="Project 3">
+        <h3>Arduino</h3>
+        <p>Surveillance Température et la Qualité de l'Air</p>
+    </div>
+
+    <section class="popup" id="popup1">
+        <div class="popup-content">
+            <span class="close" onclick="togglePopup('popup1')">×</span>
+            <div class="resume-sae">
+                <header>
+                    <h1>Développement d’un Firewall et Adblocker au niveau du LAN</h1>
+                </header>
+                <main>
+                    <section>
+                        <h2>Compétences et Fonctionnalités Intégrées</h2>
+                        <div class="dropdown">
+                            <button class="dropdown-button">Fonctionnalités<span class="arrow">▼</span></button>
+                            <div class="dropdown-content">
+                                <p>– Mise en place d’un firewall sur l’ensemble du réseau local (LAN) pour protéger les appareils connectés.</p>
+                                <p>– Intégration d’un Adblocker au niveau réseau pour bloquer les publicités sur tous les appareils connectés au LAN.</p>
+                                <p>– Configuration et gestion des règles de filtrage de sécurité, permettant de bloquer les menaces en temps réel.</p>
+                                <p>– Administration simple via une interface web, permettant d’ajuster et de gérer les politiques de sécurité du réseau.</p>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropdown-button">Compétences techniques<span class="arrow">▼</span></button>
+                            <div class="dropdown-content">
+                                <p>– Installation et configuration d’un firewall sur un routeur ou serveur Linux pour contrôler le trafic réseau.</p>
+                                <p>– Utilisation d’iptables pour définir et appliquer des règles de filtrage du trafic entrant et sortant.</p>
+                                <p>– Bloquer les publicités via DNS (Pi-hole ou équivalent) pour une gestion centralisée de la publicité.</p>
+                                <p>– Gestion des ressources réseau pour éviter toute surcharge lors de l’application des règles de filtrage.</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Objectifs et Problématique Professionnelle</h2>
+                        <p>La mise en place d’un firewall au niveau du LAN vise à protéger tous les appareils connectés contre les menaces externes telles que les malwares, les tentatives d’intrusion et les publicités indésirables.</p>
+                        <p>Le projet a pour objectif de créer une solution robuste de gestion de sécurité au niveau du réseau local, accessible même aux utilisateurs non techniques via une interface intuitive.</p>
+                    </section>
+                    <section>
+                        <h2>Descriptif du Projet</h2>
+                        <p>Le firewall gère l’ensemble des appareils connectés au réseau en appliquant des règles de sécurité personnalisées. Les utilisateurs peuvent définir des politiques de sécurité selon les besoins du réseau (domestique, professionnel, etc.).</p>
+                        <p>L’Adblocker bloque les publicités à la source, améliorant ainsi la vitesse de navigation et la sécurité des utilisateurs.</p>
+                        <p>Les principales fonctionnalités incluent :</p>
+                        <ul>
+                            <li>Gestion de firewall via iptables pour filtrer le trafic réseau.</li>
+                            <li>Blocage des publicités via DNS et gestion des listes de blocage.</li>
+                            <li>Interface web pour la gestion des règles et la visualisation des logs de sécurité.</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Compétences Acquises</h2>
+                        <ul>
+                            <li>Administration avancée de systèmes Linux pour la gestion des services réseau.</li>
+                            <li>Configuration avancée de firewalls avec iptables et gestion des règles de filtrage.</li>
+                            <li>Installation et gestion d’outils d’Adblocking tels que Pi-hole.</li>
+                            <li>Développement d’une interface utilisateur simple pour la gestion d’un firewall et d’un Adblocker.</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Outils Utilisés</h2>
+                        <ul>
+                            <li>iptables : Gestion des règles de filtrage réseau sur Linux.</li>
+                            <li>Pi-hole : Outil pour bloquer les publicités et les traqueurs au niveau du DNS.</li>
+                            <li>Apache/Nginx : Serveur web utilisé pour l’interface de gestion.</li>
+                            <li>PHP/JavaScript : Pour le développement de l’interface utilisateur.</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Téléchargement</h2>
+                        <p>Vous pouvez télécharger le code source du projet en cliquant sur le bouton ci-dessous :</p>
+                        <a href="download/firewall_adblocker_lan.zip" download><button class="btn-talk">Télécharger</button></a>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+    <section class="popup" id="popup2">
+        <div class="popup-content">
+            <span class="close" onclick="togglePopup('popup2')">×</span>
+            <div class="resume-sae">
+                <header>
+                    <h1>Développement d'un Cloud Personnel Sécurisé</h1>
+                </header>
+                <main>
+                    <section>
+                        <h2>Compétences et Fonctionnalités Intégrées</h2>
+                        <div class="dropdown">
+                            <button class="dropdown-button">Fonctionnalités<span class="arrow">▼</span></button>
+                            <div class="dropdown-content">
+                                <p>– Mise en place d'un cloud personnel avec Nextcloud pour le stockage et le partage de fichiers.</p>
+                                <p>– Serveur multimédia avec Casa OS pour accéder à des contenus multimédias depuis n'importe quel appareil connecté.</p>
+                                <p>– Gestion de fichiers sécurisée avec chiffrement et gestion des utilisateurs pour garantir la confidentialité des données.</p>
+                                <p>– Intégration avec Raspberry Pi pour une solution légère et économique, accessible à domicile.</p>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropdown-button">Compétences techniques<span class="arrow">▼</span></button>
+                            <div class="dropdown-content">
+                                <p>– Installation et configuration de Nextcloud sur un serveur Linux pour gérer le cloud personnel.</p>
+                                <p>– Configuration de Casa OS pour la gestion des services multimédia.</p>
+                                <p>– Administration du réseau local et mise en place des protocoles de sécurité pour protéger les fichiers partagés.</p>
+                                <p>– Utilisation de Raspberry Pi pour créer une solution de cloud personnalisée et autonome.</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Objectifs et Problématique Professionnelle</h2>
+                        <p>Ce projet vise à développer un cloud personnel sécurisé, hébergé sur un Raspberry Pi, permettant à l'utilisateur de gérer ses fichiers et contenus multimédias de manière indépendante, tout en offrant une haute sécurité et une interface conviviale.</p>
+                    </section>
+                    <section>
+                        <h2>Descriptif du Projet</h2>
+                        <p>Le cloud personnel sécurisé permet de stocker, partager, et gérer les fichiers via une interface web intuitive. L'utilisateur peut créer plusieurs comptes, définir des permissions spécifiques, et accéder aux fichiers depuis n'importe quel appareil connecté au réseau local ou via internet.</p>
+                        <p>Les principales fonctionnalités incluent :</p>
+                        <ul>
+                            <li>Stockage et partage de fichiers via Nextcloud.</li>
+                            <li>Streaming multimédia via Casa OS.</li>
+                            <li>Chiffrement des données pour garantir la sécurité des fichiers.</li>
+                            <li>Gestion des utilisateurs et des permissions pour contrôler l'accès.</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Compétences Acquises</h2>
+                        <ul>
+                            <li>Administration de systèmes Linux pour la gestion de serveurs et services cloud.</li>
+                            <li>Installation et configuration de Nextcloud pour la gestion de fichiers partagés.</li>
+                            <li>Utilisation de Raspberry Pi pour héberger des services réseau.</li>
+                            <li>Mise en place de mesures de sécurité pour protéger les fichiers et données utilisateurs.</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Outils Utilisés</h2>
+                        <ul>
+                            <li>Nextcloud : Plateforme de gestion de fichiers cloud.</li>
+                            <li>Casa OS : Système pour la gestion des médias et services cloud.</li>
+                            <li>Raspberry Pi : Plateforme matérielle utilisée pour héberger les services.</li>
+                            <li>Apache/Nginx : Serveur web utilisé pour l'interface de gestion.</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Téléchargement</h2>
+                        <p>Vous pouvez télécharger le code source du projet en cliquant sur le bouton ci-dessous :</p>
+                        <a href="download/cloud_personnel_securise.zip" download><button class="btn-talk">Télécharger</button></a>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <section class="popup" id="popup3">
+        <div class="popup-content">
+            <span class="close" onclick="togglePopup('popup3')">×</span>
+            <div class="resume-sae">
+                <header>
+                    <h1>Surveillance de la Température et de la Qualité de l'Air avec Contrôle de la Couleur d'une Lampe</h1>
+                </header>
+                <main>
+                    <section>
+                        <h2>Compétences et Fonctionnalités Intégrées</h2>
+                        <div class="dropdown">
+                            <button class="dropdown-button">Fonctionnalités<span class="arrow">▼</span></button>
+                            <div class="dropdown-content">
+                                <p>– Surveillance en temps réel de la température et de la qualité de l'air grâce à des capteurs intégrés.</p>
+                                <p>– Contrôle automatique de la couleur d'une lampe RGB en fonction des données des capteurs.</p>
+                                <p>– Changement de la couleur de la lampe pour signaler différentes conditions : température élevée, mauvaise qualité de l'air, etc.</p>
+                                <p>– Interface web pour visualiser les données des capteurs et ajuster les seuils d'alerte.</p>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropdown-button">Compétences techniques<span class="arrow">▼</span></button>
+                            <div class="dropdown-content">
+                                <p>– Programmation de l'Arduino pour interpréter les données des capteurs de température et de qualité de l'air.</p>
+                                <p>– Utilisation de capteurs MQ135 pour la qualité de l'air et DHT11 pour la température et l'humidité.</p>
+                                <p>– Gestion d'une lampe RGB via l'Arduino, avec des algorithmes de changement de couleur basés sur les seuils définis.</p>
+                                <p>– Développement d'une interface utilisateur pour visualiser les données et configurer les paramètres de déclenchement.</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Objectifs et Problématique Professionnelle</h2>
+                        <p>Ce projet vise à créer un système de surveillance environnementale qui permet de suivre la qualité de l'air et la température dans une pièce. En cas de dépassement des seuils critiques, une lampe change de couleur pour alerter les utilisateurs de l'état de la pièce en temps réel.</p>
+                    </section>
+                    <section>
+                        <h2>Descriptif du Projet</h2>
+                        <p>Le système utilise des capteurs pour mesurer la température et la qualité de l'air. Si la température est trop élevée ou si l'air est pollué, la lampe passe à une couleur spécifique (par exemple, rouge pour alerte). Une interface utilisateur permet de surveiller les données et de configurer les seuils de déclenchement des alertes visuelles.</p>
+                        <p>Les principales fonctionnalités incluent :</p>
+                        <ul>
+                            <li>Mesure en temps réel de la température et de la qualité de l'air avec un capteur DHT11 et MQ135.</li>
+                            <li>Changement de la couleur de la lampe RGB en fonction des niveaux mesurés.</li>
+                            <li>Interface web pour visualiser les données des capteurs et ajuster les paramètres d'alerte.</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Compétences Acquises</h2>
+                        <ul>
+                            <li>Programmation Arduino pour gérer des capteurs et des modules de sortie (lampe RGB).</li>
+                            <li>Interfaçage de capteurs de température et de qualité de l'air avec Arduino.</li>
+                            <li>Développement d'une interface utilisateur simple pour visualiser les données en temps réel.</li>
+                            <li>Gestion de la communication entre le microcontrôleur et les modules connectés (capteurs et lampes).</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Outils Utilisés</h2>
+                        <ul>
+                            <li>Arduino UNO : Carte microcontrôleur pour gérer les capteurs et la lampe.</li>
+                            <li>MQ135 : Capteur pour mesurer la qualité de l'air (polluants).</li>
+                            <li>DHT11 : Capteur pour mesurer la température et l'humidité.</li>
+                            <li>Lampe RGB : Lampe multicolore contrôlée par PWM via Arduino.</li>
+                            <li>HTML/JavaScript : Pour créer l'interface utilisateur de suivi des données et des paramètres.</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Téléchargement</h2>
+                        <p>Vous pouvez télécharger le code source et les schémas du projet en cliquant sur le bouton ci-dessous :</p>
+                        <a href="download/arduino_temperature_air_quality_lamp.zip" download><button class="btn-talk">Télécharger</button></a>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </section>
+    
+    
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+
+
+
+    <script>
+
+
+        document.querySelectorAll('.resume-sae .dropdown-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const dropdown = button.closest('.dropdown');
+                dropdown.classList.toggle('active');
+            });
+        });
+    </script>
+    <footer>
+        <div class="footer-container">
+            
+            <div class="footer-content">
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fa-brands fa-github"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2024 <span>Zuliani Leonardo</span>. Tous droits réservés.</p>
+                </div>
+                <div class="pageFooter">
+                    <h4>Navigation</h4>
+                    <ul class="footer-nav">
+                        <li><a href="#">Accueil</a></li>
+                        <li><a href="projet.html">Projets Personnels</a></li>
+                        <li><a href="contact_me.html">Me Contacter</a></li>
+                        <li><a href="about_me.html">Moi-même</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+    </footer>
+    
+    
+    </body></html>
