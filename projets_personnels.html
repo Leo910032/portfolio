@@ -1,350 +1,1447 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<html lang="fr">
+<head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects - Portfolio Leo</title>
-    <link rel="stylesheet" href="css/all.min.css">
-    <link rel="stylesheet" href="css/css.css">
-    <link rel="stylesheet" href="css/cssProjet.css">
-    <script src="js/projet.js"></script>
-    
-        <!-- Add Font Awesome CDN -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-        <!-- Your CSS file -->
-        <link rel="stylesheet" href="css/css.css">
-    </head>
+    <title>Projets Personnels - Leonardo Zuliani</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #7d2ae8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #7d2ae8;
+        }
+
+        .contact-btn {
+            background: #7d2ae8;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            margin-top: 100px;
+            padding: 4rem 5%;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            min-width: 150px;
+        }
+
+        .stat-card h3 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #ffd700;
+        }
+
+        .stat-card p {
+            opacity: 0.9;
+        }
+
+        /* Filter Buttons */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: white;
+            color: #7d2ae8;
+            padding: 0.8rem 1.5rem;
+            border: 2px solid #7d2ae8;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #7d2ae8;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Projects Grid */
+        .projects-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, #7d2ae8, #667eea);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image i {
+            font-size: 4rem;
+            color: white;
+            z-index: 2;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="20" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="70" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="90" cy="80" r="2.5" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .project-title h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-type {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .difficulty-badge {
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .difficulty-beginner {
+            background: #e8f5e8;
+            color: #2e7d32;
+        }
+
+        .difficulty-intermediate {
+            background: #fff3e0;
+            color: #f57c00;
+        }
+
+        .difficulty-advanced {
+            background: #ffebee;
+            color: #d32f2f;
+        }
+
+        .project-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background: #f8f9fa;
+            color: #7d2ae8;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid #e9ecef;
+        }
+
+        .project-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-features li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .project-features li i {
+            color: #28a745;
+            margin-right: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .project-status {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .status-completed {
+            background: #e8f5e8;
+            color: #2e7d32;
+        }
+
+        .status-in-progress {
+            background: #fff3e0;
+            color: #f57c00;
+        }
+
+        .status-planned {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .project-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #7d2ae8, #667eea);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(125, 42, 232, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #7d2ae8;
+            padding: 0.8rem 1.5rem;
+            border: 2px solid #7d2ae8;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .btn-secondary:hover {
+            background: #7d2ae8;
+            color: white;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border-radius: 20px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -60%);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        .modal-header {
+            padding: 2rem;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, #7d2ae8, #667eea);
+            color: white;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .modal-header h2 {
+            font-size: 2rem;
+        }
+
+        .close-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-section {
+            margin-bottom: 2rem;
+        }
+
+        .modal-section h3 {
+            color: #7d2ae8;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .modal-section p,
+        .modal-section ul {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .modal-section ul {
+            padding-left: 1.5rem;
+        }
+
+        .modal-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .tech-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #e9ecef;
+        }
+
+        .tech-item i {
+            font-size: 2rem;
+            color: #7d2ae8;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-item span {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .download-section {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        .github-link {
+            background: #333;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            margin-left: 1rem;
+        }
+
+        .github-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card {
+                margin-bottom: 1rem;
+            }
+
+            .project-actions {
+                flex-direction: column;
+            }
+
+            .modal-content {
+                width: 95%;
+                max-height: 95vh;
+            }
+
+            .modal-header,
+            .modal-body {
+                padding: 1.5rem;
+            }
+
+            .stats-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .tech-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav class="lnav">
-            <nav class="navigation">
-                <a href="index.html">Accueil</a>
-                <a href="projet.html">Projets Professionnels</a>
-                <a href="projets_personnels.html">Projets Personnels</a>
-                <a href="about_me.html">Moi-même</a>
-                <a href="contact_me.html">Me Contacter</a>
-            </nav>
-            <a href="contact_me.html" class="btn-talk">Petite Discussion</a>
-        </nav>
-    </header>
-    <div class="titre">
-    <h2 class="logo"><span>V</span>oici <span>M</span>es <span>P</span>rojets <span>P</span>rofessionnelle.</h2>
-</div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">Leonardo Z.</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="projet.html">Projets Pro</a></li>
+            <li><a href="projets_personnels.html">Projets Perso</a></li>
+            <li><a href="about_me.html">À propos</a></li>
+        </ul>
+        <a href="contact_me.html" class="contact-btn">Contact</a>
+    </nav>
 
-
-
-<section class="projects">
-
- 
-
-    <div class="project" onclick="togglePopup('popup1')">
-        <img src="images/raspberrypi.svg" alt="Project 1">
-        <h3>Raspberry Pi</h3>
-        <p>Firewall et Adblocker au niveau du LAN</p>
-    </div>
-
-    <div class="project" onclick="togglePopup('popup2')">
-        <img src="images/raspberrypi.svg" alt="Project 2">
-        <h3>Raspberry Pi</h3>
-        <p>Cloud Personnel Sécurisé</p>
-    </div>
-
-    <div class="project" onclick="togglePopup('popup3')">
-        <img src="images/arduino.png" alt="Project 3">
-        <h3>Arduino</h3>
-        <p>Surveillance Température et la Qualité de l'Air</p>
-    </div>
-
-    <section class="popup" id="popup1">
-        <div class="popup-content">
-            <span class="close" onclick="togglePopup('popup1')">×</span>
-            <div class="resume-sae">
-                <header>
-                    <h1>Développement d’un Firewall et Adblocker au niveau du LAN</h1>
-                </header>
-                <main>
-                    <section>
-                        <h2>Compétences et Fonctionnalités Intégrées</h2>
-                        <div class="dropdown">
-                            <button class="dropdown-button">Fonctionnalités<span class="arrow">▼</span></button>
-                            <div class="dropdown-content">
-                                <p>– Mise en place d’un firewall sur l’ensemble du réseau local (LAN) pour protéger les appareils connectés.</p>
-                                <p>– Intégration d’un Adblocker au niveau réseau pour bloquer les publicités sur tous les appareils connectés au LAN.</p>
-                                <p>– Configuration et gestion des règles de filtrage de sécurité, permettant de bloquer les menaces en temps réel.</p>
-                                <p>– Administration simple via une interface web, permettant d’ajuster et de gérer les politiques de sécurité du réseau.</p>
-                            </div>
-                        </div>
-                        <div class="dropdown">
-                            <button class="dropdown-button">Compétences techniques<span class="arrow">▼</span></button>
-                            <div class="dropdown-content">
-                                <p>– Installation et configuration d’un firewall sur un routeur ou serveur Linux pour contrôler le trafic réseau.</p>
-                                <p>– Utilisation d’iptables pour définir et appliquer des règles de filtrage du trafic entrant et sortant.</p>
-                                <p>– Bloquer les publicités via DNS (Pi-hole ou équivalent) pour une gestion centralisée de la publicité.</p>
-                                <p>– Gestion des ressources réseau pour éviter toute surcharge lors de l’application des règles de filtrage.</p>
-                            </div>
-                        </div>
-                    </section>
-                    <section>
-                        <h2>Objectifs et Problématique Professionnelle</h2>
-                        <p>La mise en place d’un firewall au niveau du LAN vise à protéger tous les appareils connectés contre les menaces externes telles que les malwares, les tentatives d’intrusion et les publicités indésirables.</p>
-                        <p>Le projet a pour objectif de créer une solution robuste de gestion de sécurité au niveau du réseau local, accessible même aux utilisateurs non techniques via une interface intuitive.</p>
-                    </section>
-                    <section>
-                        <h2>Descriptif du Projet</h2>
-                        <p>Le firewall gère l’ensemble des appareils connectés au réseau en appliquant des règles de sécurité personnalisées. Les utilisateurs peuvent définir des politiques de sécurité selon les besoins du réseau (domestique, professionnel, etc.).</p>
-                        <p>L’Adblocker bloque les publicités à la source, améliorant ainsi la vitesse de navigation et la sécurité des utilisateurs.</p>
-                        <p>Les principales fonctionnalités incluent :</p>
-                        <ul>
-                            <li>Gestion de firewall via iptables pour filtrer le trafic réseau.</li>
-                            <li>Blocage des publicités via DNS et gestion des listes de blocage.</li>
-                            <li>Interface web pour la gestion des règles et la visualisation des logs de sécurité.</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h2>Compétences Acquises</h2>
-                        <ul>
-                            <li>Administration avancée de systèmes Linux pour la gestion des services réseau.</li>
-                            <li>Configuration avancée de firewalls avec iptables et gestion des règles de filtrage.</li>
-                            <li>Installation et gestion d’outils d’Adblocking tels que Pi-hole.</li>
-                            <li>Développement d’une interface utilisateur simple pour la gestion d’un firewall et d’un Adblocker.</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h2>Outils Utilisés</h2>
-                        <ul>
-                            <li>iptables : Gestion des règles de filtrage réseau sur Linux.</li>
-                            <li>Pi-hole : Outil pour bloquer les publicités et les traqueurs au niveau du DNS.</li>
-                            <li>Apache/Nginx : Serveur web utilisé pour l’interface de gestion.</li>
-                            <li>PHP/JavaScript : Pour le développement de l’interface utilisateur.</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h2>Téléchargement</h2>
-                        <p>Vous pouvez télécharger le code source du projet en cliquant sur le bouton ci-dessous :</p>
-                        <a href="download/firewall_adblocker_lan.zip" download><button class="btn-talk">Télécharger</button></a>
-                    </section>
-                </main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Projets Personnels</h1>
+            <p>Explorez mes créations et expérimentations techniques réalisées en autonomie</p>
+        </div>
+        
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <div class="stat-card">
+                <h3>6+</h3>
+                <p>Projets réalisés</p>
+            </div>
+            <div class="stat-card">
+                <h3>3</h3>
+                <p>Raspberry Pi</p>
+            </div>
+            <div class="stat-card">
+                <h3>10+</h3>
+                <p>Technologies</p>
+            </div>
+            <div class="stat-card">
+                <h3>100%</h3>
+                <p>Passion</p>
             </div>
         </div>
     </section>
 
+    <!-- Filter Buttons -->
+    <div class="filter-container">
+        <button class="filter-btn active" data-filter="all">Tous les projets</button>
+        <button class="filter-btn" data-filter="raspberry">Raspberry Pi</button>
+        <button class="filter-btn" data-filter="arduino">Arduino</button>
+        <button class="filter-btn" data-filter="network">Réseau</button>
+        <button class="filter-btn" data-filter="automation">Automatisation</button>
+    </div>
 
-
-
-
-
-
-
-    <section class="popup" id="popup2">
-        <div class="popup-content">
-            <span class="close" onclick="togglePopup('popup2')">×</span>
-            <div class="resume-sae">
-                <header>
-                    <h1>Développement d'un Cloud Personnel Sécurisé</h1>
-                </header>
-                <main>
-                    <section>
-                        <h2>Compétences et Fonctionnalités Intégrées</h2>
-                        <div class="dropdown">
-                            <button class="dropdown-button">Fonctionnalités<span class="arrow">▼</span></button>
-                            <div class="dropdown-content">
-                                <p>– Mise en place d'un cloud personnel avec Nextcloud pour le stockage et le partage de fichiers.</p>
-                                <p>– Serveur multimédia avec Casa OS pour accéder à des contenus multimédias depuis n'importe quel appareil connecté.</p>
-                                <p>– Gestion de fichiers sécurisée avec chiffrement et gestion des utilisateurs pour garantir la confidentialité des données.</p>
-                                <p>– Intégration avec Raspberry Pi pour une solution légère et économique, accessible à domicile.</p>
-                            </div>
-                        </div>
-                        <div class="dropdown">
-                            <button class="dropdown-button">Compétences techniques<span class="arrow">▼</span></button>
-                            <div class="dropdown-content">
-                                <p>– Installation et configuration de Nextcloud sur un serveur Linux pour gérer le cloud personnel.</p>
-                                <p>– Configuration de Casa OS pour la gestion des services multimédia.</p>
-                                <p>– Administration du réseau local et mise en place des protocoles de sécurité pour protéger les fichiers partagés.</p>
-                                <p>– Utilisation de Raspberry Pi pour créer une solution de cloud personnalisée et autonome.</p>
-                            </div>
-                        </div>
-                    </section>
-                    <section>
-                        <h2>Objectifs et Problématique Professionnelle</h2>
-                        <p>Ce projet vise à développer un cloud personnel sécurisé, hébergé sur un Raspberry Pi, permettant à l'utilisateur de gérer ses fichiers et contenus multimédias de manière indépendante, tout en offrant une haute sécurité et une interface conviviale.</p>
-                    </section>
-                    <section>
-                        <h2>Descriptif du Projet</h2>
-                        <p>Le cloud personnel sécurisé permet de stocker, partager, et gérer les fichiers via une interface web intuitive. L'utilisateur peut créer plusieurs comptes, définir des permissions spécifiques, et accéder aux fichiers depuis n'importe quel appareil connecté au réseau local ou via internet.</p>
-                        <p>Les principales fonctionnalités incluent :</p>
-                        <ul>
-                            <li>Stockage et partage de fichiers via Nextcloud.</li>
-                            <li>Streaming multimédia via Casa OS.</li>
-                            <li>Chiffrement des données pour garantir la sécurité des fichiers.</li>
-                            <li>Gestion des utilisateurs et des permissions pour contrôler l'accès.</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h2>Compétences Acquises</h2>
-                        <ul>
-                            <li>Administration de systèmes Linux pour la gestion de serveurs et services cloud.</li>
-                            <li>Installation et configuration de Nextcloud pour la gestion de fichiers partagés.</li>
-                            <li>Utilisation de Raspberry Pi pour héberger des services réseau.</li>
-                            <li>Mise en place de mesures de sécurité pour protéger les fichiers et données utilisateurs.</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h2>Outils Utilisés</h2>
-                        <ul>
-                            <li>Nextcloud : Plateforme de gestion de fichiers cloud.</li>
-                            <li>Casa OS : Système pour la gestion des médias et services cloud.</li>
-                            <li>Raspberry Pi : Plateforme matérielle utilisée pour héberger les services.</li>
-                            <li>Apache/Nginx : Serveur web utilisé pour l'interface de gestion.</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h2>Téléchargement</h2>
-                        <p>Vous pouvez télécharger le code source du projet en cliquant sur le bouton ci-dessous :</p>
-                        <a href="download/cloud_personnel_securise.zip" download><button class="btn-talk">Télécharger</button></a>
-                    </section>
-                </main>
-            </div>
-        </div>
-    </section>
-
-
-
-
-
-    <section class="popup" id="popup3">
-        <div class="popup-content">
-            <span class="close" onclick="togglePopup('popup3')">×</span>
-            <div class="resume-sae">
-                <header>
-                    <h1>Surveillance de la Température et de la Qualité de l'Air avec Contrôle de la Couleur d'une Lampe</h1>
-                </header>
-                <main>
-                    <section>
-                        <h2>Compétences et Fonctionnalités Intégrées</h2>
-                        <div class="dropdown">
-                            <button class="dropdown-button">Fonctionnalités<span class="arrow">▼</span></button>
-                            <div class="dropdown-content">
-                                <p>– Surveillance en temps réel de la température et de la qualité de l'air grâce à des capteurs intégrés.</p>
-                                <p>– Contrôle automatique de la couleur d'une lampe RGB en fonction des données des capteurs.</p>
-                                <p>– Changement de la couleur de la lampe pour signaler différentes conditions : température élevée, mauvaise qualité de l'air, etc.</p>
-                                <p>– Interface web pour visualiser les données des capteurs et ajuster les seuils d'alerte.</p>
-                            </div>
-                        </div>
-                        <div class="dropdown">
-                            <button class="dropdown-button">Compétences techniques<span class="arrow">▼</span></button>
-                            <div class="dropdown-content">
-                                <p>– Programmation de l'Arduino pour interpréter les données des capteurs de température et de qualité de l'air.</p>
-                                <p>– Utilisation de capteurs MQ135 pour la qualité de l'air et DHT11 pour la température et l'humidité.</p>
-                                <p>– Gestion d'une lampe RGB via l'Arduino, avec des algorithmes de changement de couleur basés sur les seuils définis.</p>
-                                <p>– Développement d'une interface utilisateur pour visualiser les données et configurer les paramètres de déclenchement.</p>
-                            </div>
-                        </div>
-                    </section>
-                    <section>
-                        <h2>Objectifs et Problématique Professionnelle</h2>
-                        <p>Ce projet vise à créer un système de surveillance environnementale qui permet de suivre la qualité de l'air et la température dans une pièce. En cas de dépassement des seuils critiques, une lampe change de couleur pour alerter les utilisateurs de l'état de la pièce en temps réel.</p>
-                    </section>
-                    <section>
-                        <h2>Descriptif du Projet</h2>
-                        <p>Le système utilise des capteurs pour mesurer la température et la qualité de l'air. Si la température est trop élevée ou si l'air est pollué, la lampe passe à une couleur spécifique (par exemple, rouge pour alerte). Une interface utilisateur permet de surveiller les données et de configurer les seuils de déclenchement des alertes visuelles.</p>
-                        <p>Les principales fonctionnalités incluent :</p>
-                        <ul>
-                            <li>Mesure en temps réel de la température et de la qualité de l'air avec un capteur DHT11 et MQ135.</li>
-                            <li>Changement de la couleur de la lampe RGB en fonction des niveaux mesurés.</li>
-                            <li>Interface web pour visualiser les données des capteurs et ajuster les paramètres d'alerte.</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h2>Compétences Acquises</h2>
-                        <ul>
-                            <li>Programmation Arduino pour gérer des capteurs et des modules de sortie (lampe RGB).</li>
-                            <li>Interfaçage de capteurs de température et de qualité de l'air avec Arduino.</li>
-                            <li>Développement d'une interface utilisateur simple pour visualiser les données en temps réel.</li>
-                            <li>Gestion de la communication entre le microcontrôleur et les modules connectés (capteurs et lampes).</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h2>Outils Utilisés</h2>
-                        <ul>
-                            <li>Arduino UNO : Carte microcontrôleur pour gérer les capteurs et la lampe.</li>
-                            <li>MQ135 : Capteur pour mesurer la qualité de l'air (polluants).</li>
-                            <li>DHT11 : Capteur pour mesurer la température et l'humidité.</li>
-                            <li>Lampe RGB : Lampe multicolore contrôlée par PWM via Arduino.</li>
-                            <li>HTML/JavaScript : Pour créer l'interface utilisateur de suivi des données et des paramètres.</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h2>Téléchargement</h2>
-                        <p>Vous pouvez télécharger le code source et les schémas du projet en cliquant sur le bouton ci-dessous :</p>
-                        <a href="download/arduino_temperature_air_quality_lamp.zip" download><button class="btn-talk">Télécharger</button></a>
-                    </section>
-                </main>
-            </div>
-        </div>
-    </section>
-    
-    
-
-
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-
-    
-    
-
-
-
-
-
-    <script>
-
-
-        document.querySelectorAll('.resume-sae .dropdown-button').forEach(button => {
-            button.addEventListener('click', () => {
-                const dropdown = button.closest('.dropdown');
-                dropdown.classList.toggle('active');
-            });
-        });
-    </script>
-    <footer>
-        <div class="footer-container">
-            
-            <div class="footer-content">
-                <div class="social-icons">
-                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fa-brands fa-github"></i></a>
-                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+    <!-- Projects Container -->
+    <div class="projects-container">
+        <div class="projects-grid">
+            <!-- Projet Firewall/Adblocker -->
+            <div class="project-card animate-on-scroll" data-category="raspberry network">
+                <div class="project-image">
+                    <i class="fas fa-shield-alt"></i>
                 </div>
-                <div class="copyright">
-                    <p>&copy; 2024 <span>Zuliani Leonardo</span>. Tous droits réservés.</p>
+                <div class="project-content">
+                    <div class="project-header">
+                        <div class="project-title">
+                            <h3>Firewall & Adblocker LAN</h3>
+                            <span class="project-type">Sécurité Réseau</span>
+                        </div>
+                        <span class="difficulty-badge difficulty-advanced">Avancé</span>
+                    </div>
+                    <p class="project-description">
+                        Implémentation d'un firewall et d'un système de blocage publicitaire au niveau du réseau local sur Raspberry Pi, protégeant tous les appareils connectés.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Raspberry Pi</span>
+                        <span class="tag">Pi-hole</span>
+                        <span class="tag">iptables</span>
+                        <span class="tag">DNS</span>
+                        <span class="tag">Sécurité</span>
+                    </div>
+                    <ul class="project-features">
+                        <li><i class="fas fa-check"></i> Filtrage du trafic réseau en temps réel</li>
+                        <li><i class="fas fa-check"></i> Blocage des publicités au niveau DNS</li>
+                        <li><i class="fas fa-check"></i> Interface web de gestion</li>
+                        <li><i class="fas fa-check"></i> Logs et statistiques détaillés</li>
+                    </ul>
+                    <span class="project-status status-completed">Terminé</span>
+                    <div class="project-actions">
+                        <button class="btn-primary" onclick="openModal('modal-firewall')">
+                            <i class="fas fa-eye"></i> Voir détails
+                        </button>
+                        <a href="#" class="btn-secondary">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
                 </div>
-                <div class="pageFooter">
-                    <h4>Navigation</h4>
-                    <ul class="footer-nav">
-                        <li><a href="#">Accueil</a></li>
-                        <li><a href="projet.html">Projets Personnels</a></li>
-                        <li><a href="contact_me.html">Me Contacter</a></li>
-                        <li><a href="about_me.html">Moi-même</a></li>
+            </div>
+
+            <!-- Projet Cloud Personnel -->
+            <div class="project-card animate-on-scroll" data-category="raspberry automation">
+                <div class="project-image">
+                    <i class="fas fa-cloud"></i>
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <div class="project-title">
+                            <h3>Cloud Personnel Sécurisé</h3>
+                            <span class="project-type">Storage & Media</span>
+                        </div>
+                        <span class="difficulty-badge difficulty-intermediate">Intermédiaire</span>
+                    </div>
+                    <p class="project-description">
+                        Solution de cloud privé avec Nextcloud et serveur multimédia Casa OS, offrant stockage sécurisé et streaming depuis n'importe quel appareil.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Nextcloud</span>
+                        <span class="tag">Casa OS</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">SSL/TLS</span>
+                        <span class="tag">Backup</span>
+                    </div>
+                    <ul class="project-features">
+                        <li><i class="fas fa-check"></i> Synchronisation multi-appareils</li>
+                        <li><i class="fas fa-check"></i> Streaming multimédia</li>
+                        <li><i class="fas fa-check"></i> Chiffrement des données</li>
+                        <li><i class="fas fa-check"></i> Accès externe sécurisé</li>
+                    </ul>
+                    <span class="project-status status-completed">Terminé</span>
+                    <div class="project-actions">
+                        <button class="btn-primary" onclick="openModal('modal-cloud')">
+                            <i class="fas fa-eye"></i> Voir détails
+                        </button>
+                        <a href="#" class="btn-secondary">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projet Arduino Monitoring -->
+            <div class="project-card animate-on-scroll" data-category="arduino automation">
+                <div class="project-image">
+                    <i class="fas fa-thermometer-half"></i>
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <div class="project-title">
+                            <h3>Monitoring Environnemental</h3>
+                            <span class="project-type">IoT & Capteurs</span>
+                        </div>
+                        <span class="difficulty-badge difficulty-beginner">Débutant</span>
+                    </div>
+                    <p class="project-description">
+                        Système de surveillance de la température et qualité de l'air avec Arduino, incluant alertes visuelles via lampe RGB et interface web.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Arduino</span>
+                        <span class="tag">DHT22</span>
+                        <span class="tag">MQ135</span>
+                        <span class="tag">RGB LED</span>
+                        <span class="tag">ESP32</span>
+                    </div>
+                    <ul class="project-features">
+                        <li><i class="fas fa-check"></i> Mesure température/humidité</li>
+                        <li><i class="fas fa-check"></i> Détection qualité de l'air</li>
+                        <li><i class="fas fa-check"></i> Alertes visuelles colorées</li>
+                        <li><i class="fas fa-check"></i> Interface web responsive</li>
+                    </ul>
+                    <span class="project-status status-completed">Terminé</span>
+                    <div class="project-actions">
+                        <button class="btn-primary" onclick="openModal('modal-arduino')">
+                            <i class="fas fa-eye"></i> Voir détails
+                        </button>
+                        <a href="#" class="btn-secondary">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projet Home Server -->
+            <div class="project-card animate-on-scroll" data-category="raspberry network automation">
+                <div class="project-image">
+                    <i class="fas fa-server"></i>
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <div class="project-title">
+                            <h3>Home Server Proxmox</h3>
+                            <span class="project-type">Virtualisation</span>
+                        </div>
+                        <span class="difficulty-badge difficulty-advanced">Avancé</span>
+                    </div>
+                    <p class="project-description">
+                        Serveur domestique avec Proxmox hébergeant plusieurs VMs et conteneurs Docker pour l'automatisation et l'apprentissage.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Proxmox</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">KVM</span>
+                        <span class="tag">LXC</span>
+                        <span class="tag">Automation</span>
+                    </div>
+                    <ul class="project-features">
+                        <li><i class="fas fa-check"></i> 5+ machines virtuelles</li>
+                        <li><i class="fas fa-check"></i> 10+ conteneurs Docker</li>
+                        <li><i class="fas fa-check"></i> Automatisation domestique</li>
+                        <li><i class="fas fa-check"></i> Monitoring et supervision</li>
+                    </ul>
+                    <span class="project-status status-in-progress">En cours</span>
+                    <div class="project-actions">
+                        <button class="btn-primary" onclick="openModal('modal-homeserver')">
+                            <i class="fas fa-eye"></i> Voir détails
+                        </button>
+                        <a href="#" class="btn-secondary">
+                            <i class="fas fa-cog"></i> Config
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projet VPN Personnel -->
+            <div class="project-card animate-on-scroll" data-category="raspberry network">
+                <div class="project-image">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <div class="project-title">
+                            <h3>VPN Personnel WireGuard</h3>
+                            <span class="project-type">Sécurité & Réseau</span>
+                        </div>
+                        <span class="difficulty-badge difficulty-intermediate">Intermédiaire</span>
+                    </div>
+                    <p class="project-description">
+                        Serveur VPN personnel basé sur WireGuard pour un accès sécurisé au réseau domestique depuis l'extérieur.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">WireGuard</span>
+                        <span class="tag">Raspberry Pi</span>
+                        <span class="tag">Routing</span>
+                        <span class="tag">Firewall</span>
+                        <span class="tag">Mobile</span>
+                    </div>
+                    <ul class="project-features">
+                        <li><i class="fas fa-check"></i> Accès distant sécurisé</li>
+                        <li><i class="fas fa-check"></i> Configuration multi-appareils</li>
+                        <li><i class="fas fa-check"></i> Chiffrement de bout en bout</li>
+                        <li><i class="fas fa-check"></i> Performances optimisées</li>
+                    </ul>
+                    <span class="project-status status-completed">Terminé</span>
+                    <div class="project-actions">
+                        <button class="btn-primary" onclick="openModal('modal-vpn')">
+                            <i class="fas fa-eye"></i> Voir détails
+                        </button>
+                        <a href="#" class="btn-secondary">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projet Domotique -->
+            <div class="project-card animate-on-scroll" data-category="raspberry automation">
+                <div class="project-image">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <div class="project-title">
+                            <h3>Système Domotique</h3>
+                            <span class="project-type">Home Automation</span>
+                        </div>
+                        <span class="difficulty-badge difficulty-advanced">Avancé</span>
+                    </div>
+                    <p class="project-description">
+                        Solution domotique complète avec Home Assistant pour l'automatisation des éclairages, chauffage et surveillance.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Home Assistant</span>
+                        <span class="tag">MQTT</span>
+                        <span class="tag">Zigbee</span>
+                        <span class="tag">ESP32</span>
+                        <span class="tag">Sensors</span>
+                    </div>
+                    <ul class="project-features">
+                        <li><i class="fas fa-check"></i> Contrôle éclairage automatisé</li>
+                        <li><i class="fas fa-check"></i> Gestion chauffage intelligent</li>
+                        <li><i class="fas fa-check"></i> Surveillance sécurité</li>
+                        <li><i class="fas fa-check"></i> Interface mobile</li>
+                    </ul>
+                    <span class="project-status status-in-progress">En cours</span>
+                    <div class="project-actions">
+                        <button class="btn-primary" onclick="openModal('modal-domotique')">
+                            <i class="fas fa-eye"></i> Voir détails
+                        </button>
+                        <a href="#" class="btn-secondary">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <!-- Modal Firewall -->
+    <div class="modal" id="modal-firewall">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-shield-alt"></i> Firewall & Adblocker LAN</h2>
+                <button class="close-btn" onclick="closeModal('modal-firewall')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3><i class="fas fa-target"></i> Objectifs du projet</h3>
+                    <p>Créer une solution de sécurité réseau centralisée pour protéger tous les appareils du LAN contre les menaces externes et bloquer les publicités au niveau du DNS.</p>
+                </div>
+                <div class="modal-section">
+                    <h3><i class="fas fa-cogs"></i> Technologies utilisées</h3>
+                    <div class="tech-grid">
+                        <div class="tech-item">
+                            <i class="fab fa-raspberry-pi"></i>
+                            <span>Raspberry Pi 4</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Pi-hole</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-terminal"></i>
+                            <span>iptables</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-globe"></i>
+                            <span>Apache</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-section">
+                    <h3><i class="fas fa-list-check"></i> Fonctionnalités implémentées</h3>
+                    <ul>
+                        <li>Filtrage du trafic réseau avec règles iptables personnalisées</li>
+                        <li>Blocage DNS des publicités et trackers (+ de 1M de domaines)</li>
+                        <li>Interface web pour la gestion et le monitoring</li>
+                        <li>Logs détaillés et statistiques en temps réel</li>
+                        <li>Listes noires/blanches personnalisables</li>
+                        <li>Sauvegarde automatique des configurations</li>
                     </ul>
                 </div>
+                <div class="modal-section">
+                    <h3><i class="fas fa-chart-line"></i> Résultats obtenus</h3>
+                    <ul>
+                        <li>Réduction de 85% du trafic publicitaire</li>
+                        <li>Protection complète du réseau contre les malwares</li>
+                        <li>Amélioration de 40% de la vitesse de navigation</li>
+                        <li>Monitoring 24/7 avec alertes automatiques</li>
+                    </ul>
+                </div>
+                <div class="download-section">
+                    <h3>Code source disponible</h3>
+                    <p>Scripts de configuration, documentation et guide d'installation</p>
+                    <a href="#" class="download-btn">
+                        <i class="fas fa-download"></i> Télécharger
+                    </a>
+                    <a href="#" class="github-link">
+                        <i class="fab fa-github"></i> Voir sur GitHub
+                    </a>
+                </div>
             </div>
-            
         </div>
-    </footer>
-    
-    
-    </body></html>
+    </div>
+
+    <!-- Modal Cloud -->
+    <div class="modal" id="modal-cloud">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-cloud"></i> Cloud Personnel Sécurisé</h2>
+                <button class="close-btn" onclick="closeModal('modal-cloud')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3><i class="fas fa-target"></i> Objectifs du projet</h3>
+                    <p>Développer une solution de cloud privé complète avec stockage sécurisé, synchronisation multi-appareils et serveur multimédia intégré.</p>
+                </div>
+                <div class="modal-section">
+                    <h3><i class="fas fa-cogs"></i> Architecture technique</h3>
+                    <div class="tech-grid">
+                        <div class="tech-item">
+                            <i class="fas fa-cloud"></i>
+                            <span>Nextcloud</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-home"></i>
+                            <span>Casa OS</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-docker"></i>
+                            <span>Docker</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-lock"></i>
+                            <span>SSL/TLS</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-section">
+                    <h3><i class="fas fa-list-check"></i> Services déployés</h3>
+                    <ul>
+                        <li>Nextcloud pour le stockage et la synchronisation</li>
+                        <li>Jellyfin pour le streaming multimédia</li>
+                        <li>Bitwarden pour la gestion des mots de passe</li>
+                        <li>PhotoPrism pour la gestion des photos</li>
+                        <li>Nginx Proxy Manager pour le reverse proxy</li>
+                        <li>Système de sauvegarde automatique</li>
+                    </ul>
+                </div>
+                <div class="modal-section">
+                    <h3><i class="fas fa-shield-alt"></i> Sécurité mise en place</h3>
+                    <ul>
+                        <li>Chiffrement end-to-end de toutes les données</li>
+                        <li>Authentification à deux facteurs (2FA)</li>
+                        <li>Certificats SSL Let's Encrypt</li>
+                        <li>Accès VPN sécurisé depuis l'extérieur</li>
+                        <li>Firewall et monitoring des accès</li>
+                    </ul>
+                </div>
+                <div class="download-section">
+                    <h3>Configuration Docker</h3>
+                    <p>Docker Compose, scripts et documentation complète</p>
+                    <a href="#" class="download-btn">
+                        <i class="fas fa-download"></i> Télécharger
+                    </a>
+                    <a href="#" class="github-link">
+                        <i class="fab fa-github"></i> Voir sur GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Arduino -->
+    <div class="modal" id="modal-arduino">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-thermometer-half"></i> Monitoring Environnemental</h2>
+                <button class="close-btn" onclick="closeModal('modal-arduino')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3><i class="fas fa-target"></i> Objectifs du projet</h3>
+                    <p>Créer un système de surveillance environnementale avec alertes visuelles pour contrôler la qualité de l'air et les conditions climatiques.</p>
+                </div>
+                <div class="modal-section">
+                    <h3><i class="fas fa-microchip"></i> Composants utilisés</h3>
+                    <div class="tech-grid">
+                        <div class="tech-item">
+                            <i class="fas fa-microchip"></i>
+                            <span>Arduino UNO</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-thermometer-half"></i>
+                            <span>DHT22</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-smog"></i>
+                            <span>MQ135</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>LED RGB</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-section">
+                    <h3><i class="fas fa-list-check"></i> Fonctionnalités développées</h3>
+                    <ul>
+                        <li>Mesure de température et humidité en temps réel</li>
+                        <li>Détection des polluants atmosphériques (CO2, NH3, etc.)</li>
+                        <li>Système d'alertes visuelles par couleurs</li>
+                        <li>Interface web pour visualisation des données</li>
+                        <li>Historique des mesures sur carte SD</li>
+                        <li>Alertes par notification mobile</li>
+                    </ul>
+                </div>
+                <div class="modal-section">
+                    <h3><i class="fas fa-palette"></i> Système d'alertes colorées</h3>
+                    <ul>
+                        <li><span style="color: #28a745;">Vert :</span> Conditions optimales</li>
+                        <li><span style="color: #ffc107;">Jaune :</span> Attention recommandée</li>
+                        <li><span style="color: #fd7e14;">Orange :</span> Conditions dégradées</li>
+                        <li><span style="color: #dc3545;">Rouge :</span> Alerte critique</li>
+                    </ul>
+                </div>
+                <div class="download-section">
+                    <h3>Code Arduino</h3>
+                    <p>Code source, schémas de câblage et guide de montage</p>
+                    <a href="#" class="download-btn">
+                        <i class="fas fa-download"></i> Télécharger
+                    </a>
+                    <a href="#" class="github-link">
+                        <i class="fab fa-github"></i> Voir sur GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Home Server -->
+    <div class="modal" id="modal-homeserver">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-server"></i> Home Server Proxmox</h2>
+                <button class="close-btn" onclick="closeModal('modal-homeserver')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3><i class="fas fa-target"></i> Objectifs du projet</h3>
+                    <p>Mettre en place un serveur domestique complet avec virtualisation pour l'apprentissage et l'automatisation de la maison.</p>
+                </div>
+                <div class="modal-section">
+                    <h3><i class="fas fa-list-check"></i> Services hébergés</h3>
+                    <ul>
+                        <li>5 machines virtuelles Linux (Ubuntu, Debian, CentOS)</li>
+                        <li>10+ conteneurs Docker (Portainer, Grafana, InfluxDB)</li>
+                        <li>Home Assistant pour la domotique</li>
+                        <li>Serveur de développement avec GitLab</li>
+                        <li>Système de monitoring Prometheus + Grafana</li>
+                        <li>Backup automatique avec Proxmox Backup Server</li>
+                    </ul>
+                </div>
+                <div class="modal-section">
+                    <h3><i class="fas fa-chart-line"></i> Performances et monitoring</h3>
+                    <ul>
+                        <li>CPU : Intel i5 8th gen - 6 cores</li>
+                        <li>RAM : 32GB DDR4 pour les VMs</li>
+                        <li>Storage : 2TB NVMe + 4TB HDD en RAID</li>
+                        <li>Réseau : Gigabit avec VLAN séparés</li>
+                        <li>Monitoring 24/7 avec alertes</li>
+                    </ul>
+                </div>
+                <div class="download-section">
+                    <h3>Configuration en cours</h3>
+                    <p>Documentation et scripts disponibles à la fin du projet</p>
+                    <a href="#" class="download-btn" style="opacity: 0.6;">
+                        <i class="fas fa-clock"></i> En développement
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal VPN -->
+    <div class="modal" id="modal-vpn">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-lock"></i> VPN Personnel WireGuard</h2>
+                <button class="close-btn" onclick="closeModal('modal-vpn')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3><i class="fas fa-target"></i> Objectifs du projet</h3>
+                    <p>Créer un accès VPN sécurisé au réseau domestique pour pouvoir accéder aux services internes depuis l'extérieur.</p>
+                </div>
+                <div class="modal-section">
+                    <h3><i class="fas fa-cogs"></i> Technologies utilisées</h3>
+                    <div class="tech-grid">
+                        <div class="tech-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>WireGuard</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-raspberry-pi"></i>
+                            <span>Raspberry Pi</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-route"></i>
+                            <span>iptables</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Apps mobiles</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-section">
+                    <h3><i class="fas fa-list-check"></i> Configuration réalisée</h3>
+                    <ul>
+                        <li>Serveur WireGuard sur Raspberry Pi</li>
+                        <li>Génération automatique des clés clients</li>
+                        <li>Routage sécurisé vers le LAN</li>
+                        <li>Configuration mobile (Android/iOS)</li>
+                        <li>Monitoring des connexions actives</li>
+                        <li>Scripts de gestion automatisée</li>
+                    </ul>
+                </div>
+                <div class="modal-section">
+                    <h3><i class="fas fa-shield-alt"></i> Sécurité implémentée</h3>
+                    <ul>
+                        <li>Chiffrement ChaCha20-Poly1305</li>
+                        <li>Authentification par clés cryptographiques</li>
+                        <li>Protection contre les attaques DDoS</li>
+                        <li>Logs de connexion sécurisés</li>
+                        <li>Kill switch automatique</li>
+                    </ul>
+                </div>
+                <div class="download-section">
+                    <h3>Scripts de configuration</h3>
+                    <p>Configuration serveur et scripts de gestion clients</p>
+                    <a href="#" class="download-btn">
+                        <i class="fas fa-download"></i> Télécharger
+                    </a>
+                    <a href="#" class="github-link">
+                        <i class="fab fa-github"></i> Voir sur GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Domotique -->
+    <div class="modal" id="modal-domotique">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-home"></i> Système Domotique</h2>
+                <button class="close-btn" onclick="closeModal('modal-domotique')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3><i class="fas fa-target"></i> Objectifs du projet</h3>
+                    <p>Développer un système domotique complet pour automatiser l'éclairage, le chauffage et la sécurité de la maison.</p>
+                </div>
+                <div class="modal-section">
+                    <h3><i class="fas fa-cogs"></i> Écosystème domotique</h3>
+                    <div class="tech-grid">
+                        <div class="tech-item">
+                            <i class="fas fa-home"></i>
+                            <span>Home Assistant</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-broadcast-tower"></i>
+                            <span>MQTT</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-wifi"></i>
+                            <span>Zigbee</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-microchip"></i>
+                            <span>ESP32</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-section">
+                    <h3><i class="fas fa-list-check"></i> Automatisations créées</h3>
+                    <ul>
+                        <li>Éclairage automatique selon présence et luminosité</li>
+                        <li>Gestion intelligente du chauffage par zones</li>
+                        <li>Système d'alarme avec capteurs de mouvement</li>
+                        <li>Contrôle vocal avec Google Assistant</li>
+                        <li>Scénarios personnalisés (réveil, coucher, absence)</li>
+                        <li>Monitoring énergétique en temps réel</li>
+                    </ul>
+                </div>
+                <div class="modal-section">
+                    <h3><i class="fas fa-mobile-alt"></i> Interfaces utilisateur</h3>
+                    <ul>
+                        <li>Application mobile Home Assistant</li>
+                        <li>Dashboard web personnalisé</li>
+                        <li>Commandes vocales intégrées</li>
+                        <li>Panneaux de contrôle muraux tactiles</li>
+                        <li>Notifications push intelligentes</li>
+                    </ul>
+                </div>
+                <div class="download-section">
+                    <h3>Configuration Home Assistant</h3>
+                    <p>Configurations YAML, automatisations et intégrations</p>
+                    <a href="#" class="download-btn">
+                        <i class="fas fa-download"></i> Télécharger
+                    </a>
+                    <a href="#" class="github-link">
+                        <i class="fab fa-github"></i> Voir sur GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            animatedElements.forEach(el => observer.observe(el));
+        });
+
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filter = button.dataset.filter;
+
+                // Filter projects with animation
+                projectCards.forEach((card, index) => {
+                    const categories = card.dataset.category.split(' ');
+                    const shouldShow = filter === 'all' || categories.includes(filter);
+                    
+                    if (shouldShow) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, index * 100);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal(modal.id);
+                }
+            });
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    if (modal.style.display === 'block') {
+                        closeModal(modal.id);
+                    }
+                });
+            }
+        });
+
+        // Add hover effects to project cards
+        projectCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Counter animation for stats
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    element.textContent = target + '+';
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(start) + '+';
+                }
+            }, 16);
+        }
+
+        // Trigger counter animation when stats section is visible
+        const statsSection = document.querySelector('.stats-section');
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('.stat-card h3');
+                    const targets = [6, 3, 10, 100];
+                    
+                    counters.forEach((counter, index) => {
+                        if (index < 3) {
+                            animateCounter(counter, targets[index]);
+                        } else {
+                            counter.textContent = '100%';
+                        }
+                    });
+                    
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Add smooth transitions for project cards
+        projectCards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+            card.classList.add('animate-on-scroll');
+        });
+    </script>
+</body>
+</html>
