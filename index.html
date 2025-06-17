@@ -1,135 +1,994 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mon Portfolio</title>
-    
-        <!-- Add Font Awesome CDN -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-        <!-- Your CSS file -->
-        <link rel="stylesheet" href="css/css.css">
-    </head>
-    
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Portfolio</title>
-    <link rel="stylesheet" href="css/css.css">
-    <script src="js/projet.js"></script>
+    <title>Leonardo Zuliani - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #7d2ae8;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: #7d2ae8;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: #7d2ae8;
+        }
+
+        .contact-btn {
+            background: linear-gradient(135deg, #7d2ae8, #667eea);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(125, 42, 232, 0.3);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(125, 42, 232, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff" fill-opacity="0.05" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-text h1 .highlight {
+            color: #ffd700;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.5rem;
+            color: #e8f4fd;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: #b8d4f0;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #333;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2rem;
+            border: 2px solid white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #7d2ae8;
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            text-align: center;
+            animation: fadeInRight 1s ease;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 5rem 5%;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #7d2ae8;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .about-image img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #7d2ae8;
+            box-shadow: 0 20px 40px rgba(125, 42, 232, 0.2);
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 4px solid #7d2ae8;
+        }
+
+        .stat-item h4 {
+            font-size: 2rem;
+            color: #7d2ae8;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            padding: 5rem 5%;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .projects-carousel {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .carousel-container {
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card {
+            min-width: 100%;
+            background: white;
+            padding: 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .project-image {
+            text-align: center;
+        }
+
+        .project-image img {
+            width: 200px;
+            height: 200px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-info h3 {
+            font-size: 2rem;
+            color: #7d2ae8;
+            margin-bottom: 1rem;
+        }
+
+        .project-info p {
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background: #7d2ae8;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #7d2ae8;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            transform: translateX(5px);
+        }
+
+        /* Carousel Controls */
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .carousel-btn {
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 50%;
+            background: #7d2ae8;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-btn:hover {
+            background: #5a1fa3;
+            transform: scale(1.1);
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: #7d2ae8;
+            transform: scale(1.2);
+        }
+
+        /* Skills Section */
+        .skills-section {
+            padding: 5rem 5%;
+            background: white;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill-category i {
+            font-size: 3rem;
+            color: #7d2ae8;
+            margin-bottom: 1rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            background: white;
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 5rem 5%;
+            background: linear-gradient(135deg, #7d2ae8 0%, #667eea 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: white;
+            color: #7d2ae8;
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 5%;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .project-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav class="lnav">
-            <nav class="navigation">
-                <a href="index.html">Accueil</a>
-                <a href="projet.html">Projets Professionnels</a>
-                <a href="projets_personnels.html">Projets Personnels</a>
-                <a href="about_me.html">Moi-même</a>
-                <a href="contact_me.html">Me Contacter</a>
-               
-            </nav>
-            <a href="contact_me.html" class="btn-talk">Petite Discussion</a>
-        </nav>
-    </header>
-    <section class="home">
-        <div class="content">
-            <div class="aside">
-                <div class="textaside">
-                    <h2>Bonjour, je suis <span>Zuliani Leonardo</span></h2>
-                    <h4>Étudiant en Informatique</h4>
-                    <p>Je suis ravi de vous retrouver sur mon portfolio. Vous découvrirez pourquoi vous avez fait le bon choix !</p>
-                    <div class="btn-group">
-                        <a href="contact_me.html">M'engager</a>
-                        <a href="projet.html">Mes Projets Professionnels</a>
-                    </div>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="logo">Leonardo Z.</a>
+        <ul class="nav-links">
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="projet.html">Projets Pro</a></li>
+            <li><a href="projets_personnels.html">Projets Perso</a></li>
+            <li><a href="about_me.html">À propos</a></li>
+        </ul>
+        <a href="contact_me.html" class="contact-btn">Contact</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Bonjour, je suis <span class="highlight">Leonardo</span></h1>
+                <p class="subtitle">Étudiant en Informatique & futur développeur application</p>
+                <p>Passionné par les technologies, spécialisé en développement d'applications. Actuellement en 2ème année de BUT Informatique à l'Université Grenoble Alpes.</p>
+                <div class="hero-buttons">
+                    <a href="contact_me.html" class="btn-primary">Me Contacter</a>
+                    <a href="projet.html" class="btn-secondary">Voir mes Projets</a>
                 </div>
-                <div class="image">
-                    <img src="images/developer.svg" alt="">
+            </div>
+            <div class="hero-image">
+                <img src="images/Capture.PNG" alt="Developer illustration">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section animate-on-scroll">
+        <div class="section-title">
+            <h2>À Propos de Moi</h2>
+            <p>Découvrez mon parcours et mes compétences en informatique</p>
+        </div>
+        <div class="about-content">
+            <div class="about-image">
+                <img src="images/Capture.PNG" alt="Leonardo Zuliani">
+            </div>
+            <div class="about-text">
+                <h3>Étudiant Passionné en Informatique</h3>
+                <p>
+                    Actuellement en deuxième année de BUT Informatique à l'Université Grenoble Alpes, 
+                    je suis entrain de développer mes expertise développement application, en administration système Linux, gestion de serveurs Ubuntu, 
+                    et virtualisation avec KVM et Docker.
+                </p>
+                <p>
+                    J'utilise un serveur personnel équipé de Proxmox pour expérimenter avec différentes 
+                    technologies et automatiser des tâches quotidiennes. Mon objectif est de devenir 
+                    administrateur système dans une entreprise innovante.
+                </p>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h4>2+</h4>
+                        <p>Années d'études</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>15+</h4>
+                        <p>Projets réalisés</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>5+</h4>
+                        <p>Technologies</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    <div class="projetMeille">
-        <h2>Mes meilleurs projets</h2>
-    </div>
-    <div class="projetRecent">
-        <div class="wrapper">
-            <i id="left" class="fa-solid fa-angle-left"></i>
-            <ul class="carousel">
-                <li class="card">
-                    <div class="img"><img src="images/java.png" alt="" draggable="false"></div>
-                    <a href="projet.html">
-                        <h2 style="color: #7d2ae8; font-weight: bold;">SAÉ 1.01/1.02</h2>
-                    </a>
-                    <span>Implémentation Java</span>
-                </li>
-                <li class="card">
-                    <div class="img"><img src="images/debian.png" alt="" draggable="false"></div>
-                    <a href="projet.html">
-                        <h2 style="color: #7d2ae8; font-weight: bold;">SAÉ S1.03</h2>
-                    </a>
-                    <span>Installation Linux</span>
-                </li>
-                <li class="card">
-                    <div class="img"><img src="images/sql.png" alt="" draggable="false"></div>
-                    <a href="projet.html">
-                        <h2 style="color: #7d2ae8; font-weight: bold;">S1.04</h2>
-                    </a>
-                    <span>Exploitation PostgreSQL</span>
-                </li>
-                <li class="card">
-                    <div class="img"><img src="images/html.jpg" alt="" draggable="false"></div>
-                    <a href="projet.html">
-                        <h2 style="color: #7d2ae8; font-weight: bold;">SAÉ 1.05/1.06</h2>
-                    </a>
-                    <span>Recueil de Besoins</span>
-                </li>
-                <li class="card">
-                    <div class="img"><img src="images/qemu.png" alt="" draggable="false"></div>
-                    <a href="projet.html">
-                        <h2 style="color: #7d2ae8; font-weight: bold;">SAÉ S2.03</h2>
-                    </a>
-                    <span>Installation Debian</span>
-                </li>
-                <li class="card">
-                    <div class="img"><img src="images/sql.png" alt="" draggable="false"></div>
-                    <h2 style="color: #7d2ae8; font-weight: bold;">SAÉ 2.04</h2>
-                    <span>Exploitation PostgreSQL</span>
-                </li>
-            </ul>
-            <i id="right" class="fa-solid fas fa-angle-right"></i>
+
+    <!-- Projects Section -->
+    <section class="projects-section animate-on-scroll">
+        <div class="section-title">
+            <h2>Mes Meilleurs Projets</h2>
+            <p>Découvrez une sélection de mes réalisations les plus marquantes</p>
         </div>
-    </div>
-    <footer>
-        <div class="footer-container">
-            
-            <div class="footer-content">
-                <div class="social-icons">
-                    <a href="https://www.linkedin.com/in/zuliani-leonardo-445871317/"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="https://github.com/Leo910032"><i class="fa-brands fa-github"></i></a>
-                </div>
-                <div class="copyright">
-                    <p>&copy; 2024 <span>Zuliani Leonardo</span>. Tous droits réservés.</p>
-                </div>
-                <div class="pageFooter">
-                    <h4>Navigation</h4>
-                    <ul class="footer-nav">
-                        <li><a href="#">Accueil</a></li>
-                        <li><a href="projet.html">Projets Personnels</a></li>
-                        <li><a href="contact_me.html">Me Contacter</a></li>
-                        <li><a href="about_me.html">Moi-même</a></li>
-                    </ul>
+        <div class="projects-carousel">
+            <div class="carousel-container">
+                <div class="carousel-track" id="carousel-track">
+                    <!-- Project 1 -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/java.png" alt="SAE Java">
+                        </div>
+                        <div class="project-info">
+                            <h3>SAÉ 1.01/1.02 - Développement Java</h3>
+                            <p>Implémentation d'un besoin client avec développement d'une application Java complète, incluant la gestion de projet et les tests.</p>
+                            <div class="project-tags">
+                                <span class="tag">Java</span>
+                                <span class="tag">OOP</span>
+                                <span class="tag">Tests</span>
+                            </div>
+                            <a href="projet.html" class="project-link">
+                                Voir le projet <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/qemu.png" alt="SAE Linux">
+                        </div>
+                        <div class="project-info">
+                            <h3>SAÉ S2.03 - Serveur Debian</h3>
+                            <p>Installation et configuration complète d'un serveur Debian 12 avec Apache, PostgreSQL et PHP, documentation en anglais.</p>
+                            <div class="project-tags">
+                                <span class="tag">Linux</span>
+                                <span class="tag">Apache</span>
+                                <span class="tag">PostgreSQL</span>
+                            </div>
+                            <a href="projet.html" class="project-link">
+                                Voir le projet <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Project 3 -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/sql.png" alt="SAE Database">
+                        </div>
+                        <div class="project-info">
+                            <h3>SAÉ S1.04 - Base de Données Titanic</h3>
+                            <p>Modélisation et création d'une base de données pour analyser les facteurs de survie du naufrage du Titanic.</p>
+                            <div class="project-tags">
+                                <span class="tag">PostgreSQL</span>
+                                <span class="tag">Modélisation</span>
+                                <span class="tag">Analyse</span>
+                            </div>
+                            <a href="projet.html" class="project-link">
+                                Voir le projet <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
+            <div class="carousel-controls">
+                <button class="carousel-btn" id="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn" id="next-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="carousel-indicators" id="indicators"></div>
         </div>
-    </footer>
-    
+    </section>
 
+    <!-- Skills Section -->
+    <section class="skills-section animate-on-scroll">
+        <div class="section-title">
+            <h2>Mes Compétences</h2>
+            <p>Technologies et outils que j'ai utilisé</p>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <i class="fas fa-server"></i>
+                <h3>Administration Système</h3>
+                <ul class="skill-list">
+                    <li>Linux/Ubuntu</li>
+                    <li>Docker</li>
+                    <li>Proxmox/KVM</li>
+                    <li>Nginx/Apache</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <i class="fas fa-code"></i>
+                <h3>Développement</h3>
+                <ul class="skill-list">
+                    <li>Java</li>
+                    <li>Python</li>
+                    <li>PHP</li>
+                    <li>JavaScript</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <i class="fas fa-database"></i>
+                <h3>Bases de Données</h3>
+                <ul class="skill-list">
+                    <li>PostgreSQL</li>
+                    <li>MySQL</li>
+                    <li>Modélisation</li>
+                    <li>Requêtes SQL</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <i class="fas fa-tools"></i>
+                <h3>Outils</h3>
+                <ul class="skill-list">
+                    <li>Git/GitLab</li>
+                    <li>VS Code</li>
+                    <li>Node.js</li>
+                    <li>Turn</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section animate-on-scroll">
+        <div class="contact-content">
+            <h2>Travaillons Ensemble</h2>
+            <p>Intéressé par mon profil ? N'hésitez pas à me contacter pour discuter d'opportunités de stage ou de collaboration.</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>leonardo.zuliani@etu.univ-grenoble-alpes.fr</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Grenoble, France</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-university"></i>
+                    <span>Université Grenoble Alpes</span>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/zuliani-leonardo-445871317/" target="_blank">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/Leo910032" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+
+            <a href="contact_me.html" class="btn-primary" style="margin-top: 2rem; display: inline-block;">
+                Me Contacter
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Leonardo Zuliani. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            animatedElements.forEach(el => observer.observe(el));
+        });
+
+        // Carousel functionality
+        class ProjectCarousel {
+            constructor() {
+                this.track = document.getElementById('carousel-track');
+                this.prevBtn = document.getElementById('prev-btn');
+                this.nextBtn = document.getElementById('next-btn');
+                this.indicatorsContainer = document.getElementById('indicators');
+                
+                this.currentIndex = 0;
+                this.totalSlides = this.track.children.length;
+                
+                this.init();
+            }
+
+            init() {
+                this.createIndicators();
+                this.updateCarousel();
+                this.bindEvents();
+                this.startAutoPlay();
+            }
+
+            createIndicators() {
+                for (let i = 0; i < this.totalSlides; i++) {
+                    const indicator = document.createElement('div');
+                    indicator.className = 'indicator';
+                    indicator.addEventListener('click', () => this.goToSlide(i));
+                    this.indicatorsContainer.appendChild(indicator);
+                }
+            }
+
+            updateCarousel() {
+                const translateX = -this.currentIndex * 100;
+                this.track.style.transform = `translateX(${translateX}%)`;
+                
+                // Update indicators
+                const indicators = this.indicatorsContainer.children;
+                Array.from(indicators).forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === this.currentIndex);
+                });
+            }
+
+            nextSlide() {
+                this.currentIndex = (this.currentIndex + 1) % this.totalSlides;
+                this.updateCarousel();
+            }
+
+            prevSlide() {
+                this.currentIndex = (this.currentIndex - 1 + this.totalSlides) % this.totalSlides;
+                this.updateCarousel();
+            }
+
+            goToSlide(index) {
+                this.currentIndex = index;
+                this.updateCarousel();
+            }
+
+            bindEvents() {
+                this.nextBtn.addEventListener('click', () => this.nextSlide());
+                this.prevBtn.addEventListener('click', () => this.prevSlide());
+            }
+
+            startAutoPlay() {
+                setInterval(() => {
+                    this.nextSlide();
+                }, 5000);
+            }
+        }
+
+        // Initialize carousel
+        new ProjectCarousel();
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
